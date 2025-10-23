@@ -1,0 +1,16 @@
+[project]
+name = "hub-markitdown-mcp"
+version = "0.1.0"
+description = "without.systems The Hub markitdown MCP server"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Stefan Weber", email = "stefan.weber@without.systems" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=2.12.5",
+    "markitdown[all]>=0.1.3",
+    "python-dotenv>=1.1.1",
+    "uvicorn[standard]>=0.38.0",
+]
