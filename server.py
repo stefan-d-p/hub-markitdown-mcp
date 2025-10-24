@@ -2,6 +2,7 @@ from fastmcp import FastMCP
 from markitdown import MarkItDown
 from starlette.responses import JSONResponse
 from auth import verifier
+from pydantic import Field
 
 mcp = FastMCP(
     name="MarkItdown MCP Server",
@@ -10,8 +11,10 @@ mcp = FastMCP(
 )
 
 @mcp.tool()
-def convert_to_markdown(uri: str) -> str:
-    """Convert a resorce described by an http:, https:, or data: URI to markdown"""
+def convert_to_markdown(
+    uri: str = Field(description="The URI (http://, https://, or data:) of the document to convert to markdown")
+) -> str:
+    """Convert a resource described by an http:, https:, or data: URI to markdown"""
     return MarkItDown(
         enable_plugins="false"
     ).convert_uri(uri).markdown
